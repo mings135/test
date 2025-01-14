@@ -4,9 +4,6 @@
 name: Go
 
 on:
-  push:
-    tags:
-      - v*
   workflow_dispatch:
     inputs:
       tag:
@@ -14,6 +11,9 @@ on:
         required: true
         type: string
         default: "v0.1"
+
+env:
+  BUILD_TAG: ${{ github.event.inputs.tag }}
  
 jobs:
 
@@ -36,5 +36,4 @@ jobs:
 
     - name: Build
       run: |
-        echo "${{ matrix.os }}_${{ matrix.arch }}" &&
-        echo test
+        echo ${{ env.BUILD_TAG }}
