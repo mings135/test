@@ -48,10 +48,10 @@ jobs:
         echo "aaaaa" > bb/aa.img.gz
         echo "bbbbb" > bb/bb.img.gz
         mkdir -p aa
-        if ! ls -l | grep -q 'img.gz$'; then
+        if ! ls -l bb | grep -q 'img.gz$'; then
           echo yes
         fi
 
-        if ! ls -l | grep -q 'img.gz$'; then
+        if ! ls -l aa | grep -q 'img.gz$'; then
           echo yes
         fi
