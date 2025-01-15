@@ -44,5 +44,9 @@ jobs:
 
     - name: Test
       run: |
-        echo ${{ env.RELEASE_TAG }}
-        echo ${{ matrix.arch.name }}
+        mkdir -p bb
+        echo "aaaaa" > bb/aa.img.gz
+        echo "bbbbb" > bb/bb.img.gz
+        if [ -e bb/*img.gz ]; then
+          echo yes
+        fi
