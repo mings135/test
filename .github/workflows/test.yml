@@ -13,12 +13,23 @@ on:
         default: "v0.1"
 
 env:
-  BUILD_TAG: ${{ github.event.inputs.tag }}
+  BUILD_TAG: ${{ matrix.arch.name }}
  
 jobs:
 
   build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        arch:
+          - name: x86
+            type: 64
+            device: generic
+          - name: rockchip
+            type: armv8
+            device: friendlyarm_nanopi-r2s
+
     steps:
     - uses: actions/checkout@v4
 
@@ -34,3 +45,4 @@ jobs:
     - name: Test
       run: |
         echo ${{ env.RELEASE_TAG }}
+        echo ${{ env.BUILD_TAG }}
