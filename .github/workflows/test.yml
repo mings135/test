@@ -49,9 +49,9 @@ jobs:
         echo "bbbbb" > bb/bb.img.gz
         mkdir -p aa
         if ! ls -l bb | grep -q 'img.gz$'; then
-          echo yes
+          echo yesbb
         fi
 
         if ! ls -l aa | grep -q 'img.gz$'; then
-          echo yes
+          echo yesaa
         fi
