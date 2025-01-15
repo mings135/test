@@ -33,4 +33,4 @@ jobs:
 
     - name: Test
       run: |
-        echo $RELEASE_TAG
+        echo ${{ env.RELEASE_TAG }}
