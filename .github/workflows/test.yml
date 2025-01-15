@@ -47,6 +47,11 @@ jobs:
         mkdir -p bb
         echo "aaaaa" > bb/aa.img.gz
         echo "bbbbb" > bb/bb.img.gz
-        if [ -e bb/*img.gz ]; then
+        mkdir -p aa
+        if ! ls -l | grep -q 'img.gz$'; then
+          echo yes
+        fi
+
+        if ! ls -l | grep -q 'img.gz$'; then
           echo yes
         fi
