@@ -1,0 +1,39 @@
+name: Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "The tag(version) you want to create"
+        required: true
+        type: string
+        default: "v0.1"
+
+env:
+  TAG_NAME: ${{ inputs.tag_name || github.ref_name }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    env:
+      BUILD_DIR: build
+      APP_NAME: rrcmd
+      TEST: ""
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Golang
+        uses: actions/setup-go@v6
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - name: Build and Check
+        env:
+          TEST: ${BUILD_DIR}/${APP_NAME}
+        run: |
+          echo "$TEST"
