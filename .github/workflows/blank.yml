@@ -34,6 +34,6 @@ jobs:
 
       - name: Build and Check
         env:
-          TEST: ${{ env.BUILD_DIR}/${{env.APP_NAME}}
+          TEST: ${{ env.BUILD_DIR }}/${{ env.APP_NAME }}
         run: |
           echo "$TEST"
